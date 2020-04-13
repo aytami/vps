@@ -63,9 +63,9 @@ sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
 
 # install badvpn
 wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"wget -O /usr/bin/badvpn-udpgw "http://kimnoon.configinter.net/ssh/script/badvpn-udpgw"
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
+sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
+screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200
 
 # squid3
 apt-get update
@@ -201,18 +201,7 @@ chmod 755 userlimit.sh
 #chmod +x autokill.sh
 chmod +x userlimitssh.sh
 
-# clear cache
-service cron stop
-wget -O clearcache.sh "https://raw.githubusercontent.com/juckyvengeanceee/debian.sh/master/clearcache.sh"
-mv ./clearcache.sh /root/clearcache.sh
-#echo "@reboot root /root/clearcache.sh" > /etc/cron.d/clearcache
-chmod 755 /root/clearcache.sh
 
-# clear cache squid
-wget -O clearcachesquid.sh "https://raw.githubusercontent.com/juckyvengeanceee/debian.sh/master/clearcachesquid.sh"
-mv ./clearcachesquid.sh /root/clearcachesquid.sh
-chmod ug+x /root/clearcachesquid.sh
-service cron start
 # userlimit
 #cd
 #wget "https://raw.githubusercontent.com/juckyvengeanceee/debian.sh/master/limit.conf"
